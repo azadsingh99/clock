@@ -22,12 +22,11 @@
         };
         setInterval(() => {
 
-            a = new Date();
-            let date = a.toLocaleDateString(undefined, options);
-
-
-            let time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
-            document.getElementById('time').innerHTML = time + "<br>on " + date;
+            d = new Date();
+            var utc_offset = 5.3 * 60;
+            let date = d.toLocaleDateString(undefined, options);
+            d.setMinutes(d.getMinutes() - utc_offset)
+            document.getElementById('time').innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "<br>On " + date;
         }, 1000);
     </script>
 </head>
@@ -52,8 +51,8 @@
                   Time 
                 </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/ustimezone.html">US</a></li>
-                            <li><a class="dropdown-item" href="#">India</a></li>
+                            <li><a class="dropdown-item" href="#">US</a></li>
+                            <li><a class="dropdown-item" href="/clock.html">India</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -62,7 +61,7 @@
     </nav>
     <div class="container my-4">
         <div class="jumbotron">
-            <h2 class="display-4">Current time Is: &nbsp;&nbsp;<span id="time"></span></h2>
+            <h2 class="display-4">Current time Is:&nbsp;&nbsp;<span id="time"></span></h2>
             <p class="lead">We have got you covered.</p>
             <hr class="my-4">
             <p>We are here to show you the time for different countries</p>
