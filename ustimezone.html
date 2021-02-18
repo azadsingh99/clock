@@ -23,10 +23,16 @@
         setInterval(() => {
 
             d = new Date();
-            var utc_offset = 5.3 * 60;
+            var utc_offset = 5.5 * 60;
             let date = d.toLocaleDateString(undefined, options);
             d.setMinutes(d.getMinutes() - utc_offset)
-            document.getElementById('time').innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "<br>On " + date;
+            let number = d.getHours();
+
+            if (number < 10) {
+                document.getElementById('time').innerHTML = '0' + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "<br>On " + date + " (UTC)";
+            } else {
+                document.getElementById('time').innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "<br>On " + date + " (UTC)";
+            }
         }, 1000);
     </script>
 </head>
@@ -41,18 +47,18 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/clock.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Time 
+                  Timezones 
                 </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">US</a></li>
-                            <li><a class="dropdown-item" href="/clock.html">India</a></li>
+                            <li><a class="dropdown-item" href="/ustimezone.html">UTC</a></li>
+                            <li><a class="dropdown-item" href="/clock.html">IST</a></li>
+                            <li><a class="dropdown-item" href="/europe_time_zone.html">CET</a></li>
+                            <li><a class="dropdown-item" href="/australlia.html">ACT</a></li>
                         </ul>
                     </li>
                 </ul>

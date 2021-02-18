@@ -178,13 +178,13 @@ function avg(a, b) {
 //    return a + b;
 //}
 
-summ = (a, b) => {
-    return a + b;
-}
-
-logkaro = () => {
-    document.querySelectorAll('.container')[1].innerHTML = "<b>Set Time Interval Fired</b>"
-    console.log("I am Log")
-}
-
-setInterval(logkaro, 2000)
+//summ = (a, b) => {
+//    return a + b;
+//}
+//
+//logkaro = () => {
+//    document.querySelectorAll('.container')[1].innerHTML = "<b>Set Time Interval Fired</b>"
+//    console.log("I am Log")
+//}
+//
+//setInterval(logkaro, 2000)

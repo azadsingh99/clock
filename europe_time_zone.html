@@ -22,55 +22,16 @@
         };
         setInterval(() => {
 
-            a = new Date();
-            let date = a.toLocaleDateString(undefined, options);
+            d = new Date();
+            var utc_offset = 4.5 * 60;
+            let date = d.toLocaleDateString(undefined, options);
+            d.setMinutes(d.getMinutes() - utc_offset)
+            let number = d.getHours();
 
-            let num1 = a.getHours()
-            let num2 = a.getMinutes();
-            let num3 = a.getSeconds();
-
-            if (num1 < 10 || num2 < 10 || num3 < 10) {
-                if (num1 < 10) {
-                    if (num2 < 10) {
-                        if (num3 < 10) {
-                            let time = '0' + a.getHours() + ':0' + a.getMinutes() + ':0' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        } else {
-                            let time = '0' + a.getHours() + ':0' + a.getMinutes() + ':' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        }
-                    } else {
-                        if (num3 < 10) {
-                            let time = '0' + a.getHours() + ':' + a.getMinutes() + ':0' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        } else {
-                            let time = '0' + a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        }
-                    }
-
-                } else {
-                    if (num2 < 10) {
-                        if (num3 < 10) {
-                            let time = a.getHours() + ':0' + a.getMinutes() + ':0' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        } else {
-                            let time = a.getHours() + ':0' + a.getMinutes() + ':' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        }
-                    } else {
-                        if (num3 < 10) {
-                            let time = a.getHours() + ':0' + a.getMinutes() + ':0' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        } else {
-                            let time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
-                            document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
-                        }
-                    }
-                }
+            if (number < 10) {
+                document.getElementById('time').innerHTML = '0' + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "<br>On " + date + " (UTC)";
             } else {
-                let time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
-                document.getElementById('time').innerHTML = time + "<br>on " + date + " (IST)";
+                document.getElementById('time').innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "<br>On " + date + " (UTC)";
             }
         }, 1000);
     </script>
@@ -94,7 +55,7 @@
                 </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/ustimezone.html">UTC</a></li>
-                            <li><a class="dropdown-item" href="#">IST</a></li>
+                            <li><a class="dropdown-item" href="/clock.html">IST</a></li>
                             <li><a class="dropdown-item" href="/europe_time_zone.html">CET</a></li>
                             <li><a class="dropdown-item" href="/australlia.html">ACT</a></li>
                         </ul>
@@ -105,11 +66,10 @@
     </nav>
     <div class="container my-4">
         <div class="jumbotron">
-            <h2 class="display-4">Current time Is: &nbsp;&nbsp;<span id="time"></span></h2>
+            <h2 class="display-4">Current time Is:&nbsp;&nbsp;<span id="time"></span></h2>
             <p class="lead">We have got you covered.</p>
             <hr class="my-4">
             <p>We are here to show you the time for different countries</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Browse Times</a>
         </div>
     </div>
 
